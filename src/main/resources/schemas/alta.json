@@ -1,0 +1,793 @@
+{
+  "type": "record",
+  "name": "Alta",
+  "namespace": "Integracion.Esquemas.Trazas",
+  "aliases": [
+    "Integracion.Esquemas.Trazas.AltaManual",
+    "Integracion.Esquemas.Trazas.AltaAutomatica",
+    "Integracion.Esquemas.Trazas.AltaRemota",
+    "Integracion.Esquemas.Trazas.AltaConAnomalias",
+    "Integracion.Esquemas.Trazas.AltaDeExcedente"
+  ],
+  "fields": [
+    {
+      "name": "traza",
+      "type": {
+        "type": "record",
+        "name": "Traza",
+        "namespace": "Integracion.Esquemas",
+        "fields": [
+          {
+            "name": "codigoDeEnvio",
+            "type": "string"
+          },
+          {
+            "name": "nombre",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "cuando",
+            "type": {
+              "type": "long",
+              "logicalType": "timestamp-millis"
+            }
+          },
+          {
+            "name": "codigoDeContratoInterno",
+            "type": "string"
+          },
+          {
+            "name": "estadoDelEnvio",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "cicloDelEnvio",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "operador",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "estadoDeLaRendicion",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "comentario",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "sucursalAsociadaAlEvento",
+            "default": null,
+            "type": [
+              "null",
+              {
+                "type": "record",
+                "name": "DatosSucursal",
+                "namespace": "Integracion.Esquemas.Referencias",
+                "fields": [
+                  {
+                    "name": "codigo",
+                    "type": "string"
+                  },
+                  {
+                    "name": "nombre",
+                    "default": null,
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  {
+                    "name": "id",
+                    "type": "string"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "envio",
+      "type": {
+        "type": "record",
+        "name": "DetalleDeEnvio",
+        "namespace": "Integracion.Esquemas.Referencias",
+        "fields": [
+          {
+            "name": "fechaDeRecibo",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "informaTarifa",
+            "type": "boolean"
+          },
+          {
+            "name": "lote",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "numeroDeEnvio",
+            "type": "string"
+          },
+          {
+            "name": "numeroDeRecibo",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "numeroInformeDeRendicion",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "peso",
+            "default": null,
+            "type": [
+              "null",
+              "float"
+            ]
+          },
+          {
+            "name": "pesoAforado",
+            "default": null,
+            "type": [
+              "null",
+              "float"
+            ]
+          },
+          {
+            "name": "valorDeclarado",
+            "default": null,
+            "type": [
+              "null",
+              "float"
+            ]
+          },
+          {
+            "name": "valorACobrar",
+            "default": null,
+            "type": [
+              "null",
+              "float"
+            ]
+          },
+          {
+            "name": "volumen",
+            "default": null,
+            "type": [
+              "null",
+              "float"
+            ]
+          },
+          {
+            "name": "origen",
+            "default": null,
+            "type": [
+              "null",
+              {
+                "type": "record",
+                "name": "LugarDeRetiroEntrega",
+                "namespace": "Integracion.Esquemas.Referencias",
+                "fields": [
+                  {
+                    "name": "datosSucursal",
+                    "default": null,
+                    "type": [
+                      "null",
+                      "DatosSucursal"
+                    ]
+                  },
+                  {
+                    "name": "domicilio",
+                    "default": null,
+                    "type": [
+                      "null",
+                      {
+                        "type": "record",
+                        "name": "Direccion",
+                        "namespace": "Integracion.Esquemas.Referencias",
+                        "fields": [
+                          {
+                            "name": "abreviaturaProvincia",
+                            "default": null,
+                            "type": [
+                              "null",
+                              "string"
+                            ]
+                          },
+                          {
+                            "name": "calle",
+                            "default": null,
+                            "type": [
+                              "null",
+                              "string"
+                            ]
+                          },
+                          {
+                            "name": "codigoDeDireccion",
+                            "default": null,
+                            "type": [
+                              "null",
+                              "string"
+                            ]
+                          },
+                          {
+                            "name": "codigoCiudad",
+                            "default": null,
+                            "type": [
+                              "null",
+                              "string"
+                            ]
+                          },
+                          {
+                            "name": "codigoPostal",
+                            "default": null,
+                            "type": [
+                              "null",
+                              "string"
+                            ]
+                          },
+                          {
+                            "name": "nombreProvincia",
+                            "default": null,
+                            "type": [
+                              "null",
+                              "string"
+                            ]
+                          },
+                          {
+                            "name": "numero",
+                            "default": null,
+                            "type": [
+                              "null",
+                              "string"
+                            ]
+                          },
+                          {
+                            "name": "telefono",
+                            "default": null,
+                            "type": [
+                              "null",
+                              "string"
+                            ]
+                          },
+                          {
+                            "name": "codigoISOProvincia",
+                            "doc": "segun ISO -3166-2 (https://es.wikipedia.org/wiki/ISO_3166-2:AR)",
+                            "default": null,
+                            "type": [
+                              "null",
+                              "string"
+                            ]
+                          },
+                          {
+                            "name": "codigoISOPais",
+                            "doc": "segun ISO 3166-1 alpha-2 (https://es.wikipedia.org/wiki/ISO_3166-1#Tabla_de_c.C3.B3digos_alfa-2_asignados_o_reservados)",
+                            "default": null,
+                            "type": [
+                              "null",
+                              "string"
+                            ]
+                          },
+                          {
+                            "name": "localidad",
+                            "default": null,
+                            "type": [
+                              "null",
+                              "string"
+                            ]
+                          },
+                          {
+                            "name": "componentesDeDireccion",
+                            "default": null,
+                            "type": [
+                              "null",
+                              {
+                                "type": "map",
+                                "values": "string"
+                              }
+                            ]
+                          },
+                          {
+                            "name": "coordenadas",
+                            "default": null,
+                            "type": [
+                              "null",
+                              {
+                                "type": "record",
+                                "name": "GeoReferencia",
+                                "namespace": "Integracion.Esquemas.Referencias",
+                                "fields": [
+                                  {
+                                    "name": "latitud",
+                                    "default": null,
+                                    "type": [
+                                      "null",
+                                      "double"
+                                    ]
+                                  },
+                                  {
+                                    "name": "longitud",
+                                    "default": null,
+                                    "type": [
+                                      "null",
+                                      "double"
+                                    ]
+                                  },
+                                  {
+                                    "name": "altura",
+                                    "default": null,
+                                    "type": [
+                                      "null",
+                                      "double"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "name": "codigoPostal",
+                    "default": null,
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  {
+                    "name": "descripcion",
+                    "default": null,
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  {
+                    "name": "localidad",
+                    "default": null,
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  {
+                    "name": "esLocal",
+                    "default": null,
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  {
+                    "name": "pais",
+                    "default": null,
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  {
+                    "name": "region",
+                    "default": null,
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "name": "sucursalOrigen",
+            "default": null,
+            "type": [
+              "null",
+              "LugarDeRetiroEntrega"
+            ]
+          },
+          {
+            "name": "destino",
+            "type": "LugarDeRetiroEntrega"
+          },
+          {
+            "name": "sucursalDestino",
+            "default": null,
+            "type": [
+              "null",
+              "LugarDeRetiroEntrega"
+            ]
+          },
+          {
+            "name": "categoriaDeFacturacion",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "centroDeCostosDelCliente",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "estado",
+            "type": "string"
+          },
+          {
+            "name": "codigoDeContratoInterno",
+            "type": "string"
+          },
+          {
+            "name": "fechaInformeDeRendicion",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "fechaAltaEnvio",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "ordenDeCompraCliente",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "tarifa",
+            "default": null,
+            "type": [
+              "null",
+              "double"
+            ]
+          },
+          {
+            "name": "componentes",
+            "type": {
+              "type": "array",
+              "items": {
+                "type": "record",
+                "name": "DatosPersonales",
+                "namespace": "Integracion.Esquemas.Referencias",
+                "fields": [
+                  {
+                    "name": "numeroDeDocumento",
+                    "default": null,
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  {
+                    "name": "nombreCompleto",
+                    "default": null,
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  {
+                    "name": "idInternoDelCliente",
+                    "default": null,
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  {
+                    "name": "eMail",
+                    "default": null,
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  {
+                    "name": "telefonos",
+                    "default": null,
+                    "type": [
+                      "null",
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "record",
+                          "name": "Telefono",
+                          "namespace": "Integracion.Esquemas.Referencias",
+                          "fields": [
+                            {
+                              "name": "tipo",
+                              "type": {
+                                "type": "enum",
+                                "name": "TipoDeTelefono",
+                                "namespace": "Integracion.Esquemas.Referencias",
+                                "symbols": [
+                                  "trabajo",
+                                  "celular",
+                                  "casa",
+                                  "otro"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "numero",
+                              "type": "string"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "name": "agrupador",
+                    "default": null,
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  {
+                    "name": "tipoDeDocumento",
+                    "type": {
+                      "type": "enum",
+                      "name": "TipoDeDocumento",
+                      "namespace": "Integracion.Esquemas.Referencias",
+                      "symbols": [
+                        "undefined",
+                        "DNI",
+                        "CUIT",
+                        "CUIL"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "name": "destinatario",
+            "default": null,
+            "type": [
+              "null",
+              "DatosPersonales"
+            ]
+          },
+          {
+            "name": "remitente",
+            "default": null,
+            "type": [
+              "null",
+              "DatosPersonales"
+            ]
+          },
+          {
+            "name": "cantidadDeBultos",
+            "default": null,
+            "type": [
+              "null",
+              "int"
+            ]
+          },
+          {
+            "name": "fechaProbableDeEntrega",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "observaciones",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "numeroDeRemito",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "numeroDeSeguimientoDelCliente",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "datosAdicionales",
+            "default": null,
+            "type": [
+              "null",
+              {
+                "type": "map",
+                "values": "string"
+              }
+            ]
+          },
+          {
+            "name": "fechaPactadaDeEntrega",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "altoEnCm",
+            "default": null,
+            "type": [
+              "null",
+              "double"
+            ]
+          },
+          {
+            "name": "anchoEnCm",
+            "default": null,
+            "type": [
+              "null",
+              "double"
+            ]
+          },
+          {
+            "name": "largoEnCm",
+            "default": null,
+            "type": [
+              "null",
+              "double"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "contrato",
+      "type": {
+        "type": "record",
+        "name": "Contrato",
+        "namespace": "Integracion.Esquemas.Referencias",
+        "fields": [
+          {
+            "name": "codigoDeContratoInterno",
+            "type": "string"
+          },
+          {
+            "name": "descripcion",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "estaActivo",
+            "type": "boolean"
+          },
+          {
+            "name": "tipoDeServicio",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "codigoDeDireccion",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "codigoDeClienteInterno",
+            "type": "string"
+          },
+          {
+            "name": "vigenciaDesde",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          {
+            "name": "vigenciaHasta",
+            "default": null,
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "cantidadDeBultos",
+      "default": null,
+      "type": [
+        "null",
+        "int"
+      ]
+    },
+    {
+      "name": "agrupadorDeBultos",
+      "default": null,
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    {
+      "name": "numeroDeBulto",
+      "default": null,
+      "type": [
+        "null",
+        "int"
+      ]
+    }
+  ]
+}
